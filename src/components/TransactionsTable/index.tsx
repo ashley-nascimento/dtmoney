@@ -1,6 +1,11 @@
+import { useContext } from "react";
+import { TransactionsContext } from "../../TransactionContext";
 import { Container } from "./styles";
 
 export function TransactionTable(){
+
+    const { transactions } = useContext(TransactionsContext)
+  
     return(
         <Container>
             <table>
@@ -13,30 +18,20 @@ export function TransactionTable(){
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Desenvolvimento de website</td>
-                        <td className="deposit">R$1000,00</td>
-                        <td>Desenvolvimento</td>
-                        <td>16/06/2022</td>
+                    {transactions.map((transaction, idx) => (
+                    <tr key={transaction.id}>
+                        <td>{transaction.title}</td>
+                        <td className={transaction.type}>
+                            {Intl.NumberFormat('pt-BR', {
+                                style: 'currency',
+                                currency: 'BRL'
+                            }).format(transaction.amount)}
+                        </td>
+                        <td>{transaction.category}</td>
+                        <td>{Intl.DateTimeFormat('pt-BR').format(new Date(transaction.createAt))}</td>
                     </tr>
-                    <tr>
-                        <td>Desenvolvimento de website</td>
-                        <td className="withdraw">- R$1000,00</td>
-                        <td>Desenvolvimento</td>
-                        <td>16/06/2022</td>
-                    </tr>
-                    <tr>
-                        <td>Desenvolvimento de website</td>
-                        <td className="withdraw">- R$1000,00</td>
-                        <td>Desenvolvimento</td>
-                        <td>16/06/2022</td>
-                    </tr>
-                    <tr>
-                        <td>Desenvolvimento de website</td>
-                        <td className="deposit">R$1000,00</td>
-                        <td>Desenvolvimento</td>
-                        <td>16/06/2022</td>
-                    </tr>
+                    ))}
+
                 </tbody>
             </table>
         </Container>

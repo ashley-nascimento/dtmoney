@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.header`
-    background-color:  var(--blue);
+    background-color:  var(--pink);
 `
 
 export const Content = styled.div`
@@ -17,7 +17,7 @@ export const Content = styled.div`
         font-size: 1rem;
         border: 0;
         color: var(--shape);
-        background-color: var(--blue-light);
+        background-color: var(--pink-light);
         padding: 0 2rem;
         border-radius: 0.25rem;
         height: 3rem;
