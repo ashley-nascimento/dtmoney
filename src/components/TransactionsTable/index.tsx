@@ -31,7 +31,6 @@ export function TransactionTable(){
                         <td>{Intl.DateTimeFormat('pt-BR').format(new Date(transaction.createAt))}</td>
                     </tr>
                     ))}
-
                 </tbody>
             </table>
         </Container>
